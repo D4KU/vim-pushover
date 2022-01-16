@@ -1,0 +1,77 @@
+*pushover.vim* Swap adjacent |text-objects| or move them around
+
+Author: D4KU
+License: Same terms as Vim itself (see |license|)
+
+DESCRIPTION                          *pushover*
+
+This |plugin| provides an interface to easily create |mapping|s to push around
+|text-objects|. Pushing can be understood as deleting the |text-object| under the
+cursor, making a |motion|, and pasting it again.
+
+This plugin depends on the |vim-exchange| plugin.
+https://github.com/tommcdo/vim-exchange
+
+To make the created |mapping|s repeatable, |vim-repeat| must be installed.
+https://github.com/tpope/vim-repeat
+
+MAPPINGS                             *pushover-mappings*
+
+                                     *<w*
+<w           Move the |word| under the cursor [count] |words| to the left
+
+                                     *>w*
+>w           Move the |word| under the cursor [count] |words| to the right
+
+                                     *<W*
+<W           Move the |WORD| under the cursor [count] |WORDS| to the left
+
+                                     *>W*
+>W           Move the |WORD| under the cursor [count] |WORDS| to the right
+
+                                     *<p*
+<p           Move the paragraph under the cursor [count] paragraphs up
+
+                                     *>p*
+>p           Move the paragraph under the cursor [count] paragraphs down
+
+CUSTOMIZING                          *pushover-customizing*
+
+*g:pushover_forward_prefix* (default `>`)
+
+String prefix used for the left-hand-side of the created forward mappings.
+
+*g:pushover_backward_prefix* (default `<`)
+
+String prefix used for the left-hand-side of the created backward mappings.
+
+*g:pushover_maps*
+
+Each entry in this |dictionary| is translated into two <Plug> |mapping| of the
+form `<Plug>Pushover_[prefix][key]`, one for the forward and one for the
+backward |motion|.
+
+Its keys specify the name of the |mapping|s, without the prefix.
+Its values are three-element-lists with the following strings as elements:
+  1. |text-object| to remove and paste elsewhere
+  2. |motion| to move forward to the paste location
+  3. |motion| to move backward to the paste location
+
+By default, it is defined as:
+>
+  let g:pushover_maps =
+      \ {
+      \   'w': ['iw', 'w', 'b'],
+      \   'W': ['iW', 'W', 'B'],
+      \   'p': ['ip', '}j', '{k']
+      \ }
+<
+
+If these |text-objects| and |motion|s have been remapped themselves,
+|vim-pushover| respects that.
+
+*g:pushover_map_plugs* (default `true`)
+
+If this |variable| is `true`, the <Plug> |mapping| created from |g:pushover_maps|
+is mapped to its `prefix` + `key`. Set it to `false`, if you wish to create
+the mappings yourself, for example if they are conflicting with other plugins.

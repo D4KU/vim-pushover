@@ -1,0 +1,14 @@
+<W	pushover.txt	/*<W*
+<p	pushover.txt	/*<p*
+<w	pushover.txt	/*<w*
+>W	pushover.txt	/*>W*
+>p	pushover.txt	/*>p*
+>w	pushover.txt	/*>w*
+g:pushover_backward_prefix	pushover.txt	/*g:pushover_backward_prefix*
+g:pushover_forward_prefix	pushover.txt	/*g:pushover_forward_prefix*
+g:pushover_map_plugs	pushover.txt	/*g:pushover_map_plugs*
+g:pushover_maps	pushover.txt	/*g:pushover_maps*
+pushover	pushover.txt	/*pushover*
+pushover-customizing	pushover.txt	/*pushover-customizing*
+pushover-mappings	pushover.txt	/*pushover-mappings*
+pushover.vim	pushover.txt	/*pushover.vim*
